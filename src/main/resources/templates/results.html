@@ -13,17 +13,22 @@
     <div class="container my-5">
         <h1 class="text-center mb-5" th:text="${title}">Search Results</h1>
         <p class="text-center mb-4" th:text="${results.size()} + ' results found'"></p>
-        <ul class="list-unstyled">
-            <li th:each="result : ${results}" class="mb-5">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title" th:text="${result.getName()}"></h2>
-                        <p class="card-text" th:text="${result.getSummary()}"></p>
-                        <p class="card-text" th:text="'Price: $' + ${result.getPrice()}"></p>
-                    </div>
-                </div>
-            </li>
-        </ul>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Summary</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="result : ${results}" class="mb-5">
+                    <td th:text="${result.getName()}"></td>
+                    <td th:text="${result.getSummary()}"></td>
+                    <td th:text="'$' + ${result.getPrice()}"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
